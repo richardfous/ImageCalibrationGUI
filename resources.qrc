@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/red-light.png</file>
+        <file>Resources/green-light.png</file>
+        <file>Resources/Football.jpg</file>
+        <file>Resources/Badminton.jpg</file>
+        <file>Resources/Hockey.jpg</file>
+        <file>Resources/Tennis.jpg</file>
+        <file>Resources/VolleyballCourt.jpg</file>
+        <file>Resources/Basketball.jpg</file>
+        <file>Resources/Hockey123.jpg</file>
+    </qresource>
+</RCC>

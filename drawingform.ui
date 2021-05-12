@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>drawingForm</class>
+ <widget class="QWidget" name="drawingForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>933</width>
+    <height>629</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="8,2">
+     <item>
+      <layout class="QHBoxLayout" name="imageLayout"/>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QPushButton" name="loadImageButton">
+           <property name="text">
+            <string>Load image</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="correctDistortionButton">
+           <property name="text">
+            <string>Correct Distortion</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="lineWidthLabel">
+           <property name="text">
+            <string>Line Width: </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineWidthEdit"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="setColorButton">
+           <property name="text">
+            <string>Choose color</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="colorLabel">
+           <property name="minimumSize">
+            <size>
+             <width>25</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,2">
+         <item>
+          <widget class="QLabel" name="actionLabel">
+           <property name="text">
+            <string>Select action: </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="objectSelectorComboBox"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="alphaLayout" stretch="0,1,0,0">
+         <item>
+          <widget class="QLabel" name="alphaLabel">
+           <property name="text">
+            <string>Opacity:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="alphaLineEdit"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="rotationLabel">
+           <property name="text">
+            <string>Rotation:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="rotationComboBox"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="radiusLabel">
+           <property name="text">
+            <string>Radius</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="radiusLineEdit"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="insertImageButton">
+           <property name="text">
+            <string>Select image</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="renderButton">
+         <property name="text">
+          <string>Render object</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QPushButton" name="measureDistanceButton">
+           <property name="text">
+            <string>Measure distance</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="measureDistanceLabel">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="distanceUnitsComboBox"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="tableLable"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="statusLabel">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="saveImageButton">
+           <property name="text">
+            <string>Save image</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveAlphaButton">
+           <property name="text">
+            <string>Save alpha</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QPushButton" name="clearButton">
+           <property name="text">
+            <string>Clear</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="menuButton">
+           <property name="text">
+            <string>Main menu</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
