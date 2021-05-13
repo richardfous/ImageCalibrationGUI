@@ -77,7 +77,7 @@ class PointManager {
         /// Improve image points position based on given input image.
         /// \param image matrix containing image that will be used to improve points.
         /// \param searchWindowSize specifies a size of window, which is used to improve points. Larger number may have negative impact on performance.
-        void improvePoints(cv::Mat image, int searchWindowSize = 5);
+        void improvePoints(cv::Mat image, int searchWindowSize = 20);
 
         /// Get all mapping points that were inserted in constructor of class PointManager.
         /// \returns vector containing mapping points.
