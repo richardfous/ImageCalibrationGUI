@@ -425,7 +425,7 @@ void DrawingForm::on_renderButton_clicked()
         switch (ui->rotationComboBox->currentIndex()) {
 
         case 0:
-            rotation = Image::Rotation::Automatic;
+            rotation = Image::Rotation::_0;
             break;
         case 1:
             rotation = Image::Rotation::_90;
@@ -436,10 +436,6 @@ void DrawingForm::on_renderButton_clicked()
         case 3:
             rotation = Image::Rotation::_270;
             break;
-        default:
-            rotation = Image::Rotation::_0;
-            break;
-
         }
 
 
