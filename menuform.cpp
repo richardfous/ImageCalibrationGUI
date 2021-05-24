@@ -76,6 +76,8 @@ void MenuForm::on_saveProjectButton_clicked()
     m_calibrationData->setProjectPath(pathToFile);
 
     m_calibrationData->saveCalibrationData();
+    
+    emit signalSetMainWindowName(m_calibrationData->getProjectName());
 
     checkDataStatus();
 
