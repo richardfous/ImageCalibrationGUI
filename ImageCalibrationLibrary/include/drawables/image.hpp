@@ -17,14 +17,16 @@
 /// into another image. Those points can set in create method
 /// or by using set methods. Image, that will be inserted
 /// can also be rotated, by selecting appropriate angle
-/// in enum Rotation. If type Automatic is selected, image
-/// rotation will be calculated based on coordinates of
-/// the second inserted point. Final image is then scaled
-/// and placed inbetween two input points. The image can be
-/// with or without alpha channel. If the input image has
-/// alpha channel, olny the non-transparent pixels will be
-/// drawn.If instance is created by using constructor, method
-/// draw needs to be called, in order to render the object.
+/// in enum Rotation. Default image rotation is based on 
+/// position of first and second point. First point corresponds
+/// to the top left corner of the image and second point 
+/// corresponds to the bottom right corner of the imge.
+/// Final image is then scaled and placed inbetween two 
+/// input points. The image can be with or without alpha 
+/// channel. If the input image has alpha channel, olny the 
+/// non-transparent pixels will be drawn.If instance is 
+/// created by using constructor, method draw needs to be 
+/// called, in order to render the object.
 ///
 /// After the object is created, it can be rendered into image
 /// by calling method addDrawble from the class Renderer.
@@ -36,7 +38,7 @@ class Image : public Drawable {
         /// Rotation is used to specify input image rotation.
         enum class Rotation {
 
-            _0, _90, _180, _270, Automatic
+            _0, _90, _180, _270
 
         };
 

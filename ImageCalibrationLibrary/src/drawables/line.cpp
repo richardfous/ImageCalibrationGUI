@@ -104,19 +104,19 @@ void Line::updatePoints(const cv::Size& size) {
 
     if(m_type == Type::Horizontal){
 
-        if(std::abs(std::round(points[0].x)) > m_contextSize.width && std::abs(std::round(points[0].y)) > m_contextSize.height){
+    cv::Point2f fixedPoint;
 
-            cv::Point2f fixedPoint = calculateLinesIntersection({0,0,0,m_contextSize.height},{static_cast<int>(m_point.x),static_cast<int>(m_point.y),static_cast<int>(points[1].x),static_cast<int>(points[1].y)});
+        if(points[0].x > m_contextSize.width || points[0].x < 0 || points[0].y > m_contextSize.height || points[0].y < 0){
+            fixedPoint = calculateLinesIntersection({0,0,0,m_contextSize.height},{static_cast<int>(m_point.x),static_cast<int>(m_point.y),static_cast<int>(points[1].x),static_cast<int>(points[1].y)});
             points[0].x = fixedPoint.x;
             points[0].y = fixedPoint.y;
-
-        }else if(std::abs(std::round(points[1].x)) > m_contextSize.width && std::abs(std::round(points[1].y)) > m_contextSize.height){
-
-            cv::Point2f fixedPoint = calculateLinesIntersection({m_contextSize.width,0,m_contextSize.width,m_contextSize.height},{static_cast<int>(points[0].x),static_cast<int>(points[0].y),static_cast<int>(m_point.x),static_cast<int>(m_point.y)});
+        }
+         if(points[1].x > m_contextSize.width || points[1].x < 0 || points[1].y > m_contextSize.height || points[1].y < 0){
+            fixedPoint = calculateLinesIntersection({m_contextSize.width,0,m_contextSize.width,m_contextSize.height},{static_cast<int>(points[0].x),static_cast<int>(points[0].y),static_cast<int>(m_point.x),static_cast<int>(m_point.y)});
             points[1].x = fixedPoint.x;
             points[1].y = fixedPoint.y;
-
         }
+
     }
 
     m_points = { { std::round(points[0].x), std::round(points[0].y) }

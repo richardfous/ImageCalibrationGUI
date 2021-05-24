@@ -65,8 +65,6 @@ void Circle::updatePoints(const cv::Size& size) {
 
     cv::circle(temp, points[0], m_radius, { 0.0, 0.0, 255.0 }, 1, cv::LINE_AA);
 
-    cv::warpPerspective(temp, temp, m_homography->getInverseHomographyMatrix(), size);
-
     cv::cvtColor(temp, temp, cv::COLOR_BGR2GRAY);
 
     cv::GaussianBlur(temp, temp, { 5, 5 }, 0.0);
@@ -79,6 +77,26 @@ void Circle::updatePoints(const cv::Size& size) {
 
     }
     catch (...) {
+    }
+    
+    std::vector<cv::Point2f> tempPoints;
+
+    for(uint i = 0; i < m_points[0].size(); i++){
+
+        tempPoints.push_back(m_points[0][i]);
+
+    }
+
+    cv::perspectiveTransform(tempPoints, tempPoints, m_homography->getInverseHomographyMatrix());
+
+    m_points.clear();
+
+    m_points = {{}};
+
+    for(uint i = 0; i < tempPoints.size(); i++){
+
+        m_points[0].push_back({static_cast<int>(std::round(tempPoints[i].x)),static_cast<int>(std::round(tempPoints[i].y))});
+
     }
 
 }

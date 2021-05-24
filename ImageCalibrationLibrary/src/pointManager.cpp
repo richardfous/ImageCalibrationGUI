@@ -53,9 +53,9 @@ float PointManager::computePixelDensity() {
     const UserPoint& pointFrom = *iterator;
     const UserPoint& pointTo = *++iterator;
 
-    double size = cv::norm(pointTo.mappingPoint - pointFrom.mappingPoint) / cv::norm(pointTo.imagePoint - pointFrom.imagePoint);
+    double size = (cv::norm(pointTo.mappingPoint - pointFrom.mappingPoint)/m_scale.x) / cv::norm(pointTo.imagePoint - pointFrom.imagePoint);
 
-    return static_cast<float>(size/m_scale.x);
+    return static_cast<float>(size);
 
 }
 

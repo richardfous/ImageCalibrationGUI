@@ -124,8 +124,6 @@ void Rectangle::updatePoints(const cv::Size& size) {
 
     cv::rectangle(temp, points[0], points[1], { 0.0, 0.0, 255.0 }, 1, cv::LINE_AA);
 
-    cv::warpPerspective(temp, temp, m_homography->getInverseHomographyMatrix(), size);
-
     cv::cvtColor(temp, temp, cv::COLOR_BGR2GRAY);
 
     m_points.clear();
@@ -136,6 +134,26 @@ void Rectangle::updatePoints(const cv::Size& size) {
 
     }
     catch (...) {
+    }
+    
+    std::vector<cv::Point2f> tempPoints;
+
+    for(uint i = 0; i < m_points[0].size(); i++){
+
+        tempPoints.push_back(m_points[0][i]);
+
+    }
+
+    cv::perspectiveTransform(tempPoints, tempPoints, m_homography->getInverseHomographyMatrix());
+
+    m_points.clear();
+
+    m_points = {{}};
+
+    for(uint i = 0; i < tempPoints.size(); i++){
+
+        m_points[0].push_back({static_cast<int>(std::round(tempPoints[i].x)),static_cast<int>(std::round(tempPoints[i].y))});
+
     }
 
 }
