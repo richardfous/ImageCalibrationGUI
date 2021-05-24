@@ -75,9 +75,9 @@ void DrawingForm::disconnectSignals(){
 
 void DrawingForm::connectSignals(){
 
-    connect(m_imageWidget,&ImageLabel::signalImagePoint,this, &DrawingForm::storeImagePoint);
-    connect(m_imageWidget,&ImageLabel::signalClearImagePoint,this, &DrawingForm::clearImagePoint);
-    connect(m_historyTable, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(cellDoubleClicked(int,int)));
+    connect(m_imageWidget,&ImageLabel::signalImagePoint,this, &DrawingForm::storeImagePoint, Qt::UniqueConnection);
+    connect(m_imageWidget,&ImageLabel::signalClearImagePoint,this, &DrawingForm::clearImagePoint, Qt::UniqueConnection);
+    connect(m_historyTable, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(cellDoubleClicked(int,int)), Qt::UniqueConnection);
     m_imageWidget->activateImageClick();
 }
 
@@ -109,13 +109,16 @@ void DrawingForm::on_menuButton_clicked()
 
       if (reply == QMessageBox::Yes) {
 
-          m_imagePoints = std::vector<cv::Point2f>();
-          m_renderer.clearDrawables();
-          m_renderer.render();
-          m_imageWidget->setBackgroundImage(m_renderer.getOutputImage());
-          ui->renderButton->setEnabled(false);
-          ui->statusLabel->setText("");
-          m_historyTable->setRowCount(0);
+         ui->renderButton->setEnabled(false);
+         ui->statusLabel->setText("");
+         m_historyTable->setRowCount(0);
+
+         if(!m_inputImage.empty()){
+             m_imagePoints = std::vector<cv::Point2f>();
+             m_renderer.clearDrawables();
+             m_renderer.render();
+             m_imageWidget->setBackgroundImage(m_renderer.getOutputImage());
+         }
 
       }else{
 
@@ -141,6 +144,7 @@ void DrawingForm::storeImagePoint(){
 
         if(m_imagePoints.size() == 2){
             m_imageWidget->deactivateImageClick();
+            ui->measureDistanceButton->setEnabled(true);
         }
 
     }else{
@@ -187,6 +191,7 @@ void DrawingForm::on_objectSelectorComboBox_activated(int index)
         ui->measureDistanceButton->show();
         ui->measureDistanceLabel->show();
         ui->measureDistanceButton->setEnabled(false);
+        ui->renderButton->hide();
         ui->insertImageButton->hide();
         ui->radiusLabel->hide();
         ui->radiusLineEdit->hide();
@@ -201,6 +206,7 @@ void DrawingForm::on_objectSelectorComboBox_activated(int index)
         ui->distanceUnitsComboBox->hide();
         ui->measureDistanceButton->hide();
         ui->measureDistanceLabel->hide();
+        ui->renderButton->show();
         ui->insertImageButton->hide();
         ui->rotationComboBox->hide();
         ui->rotationLabel->hide();
@@ -215,6 +221,7 @@ void DrawingForm::on_objectSelectorComboBox_activated(int index)
         ui->distanceUnitsComboBox->hide();
         ui->measureDistanceButton->hide();
         ui->measureDistanceLabel->hide();
+        ui->renderButton->show();
         ui->insertImageButton->show();
         ui->alphaLabel->show();
         ui->alphaLineEdit->show();
@@ -228,6 +235,7 @@ void DrawingForm::on_objectSelectorComboBox_activated(int index)
         ui->measureDistanceButton->hide();
         ui->measureDistanceLabel->hide();
         ui->insertImageButton->hide();
+        ui->renderButton->show();
         ui->radiusLabel->hide();
         ui->radiusLineEdit->hide();
         ui->rotationComboBox->hide();
