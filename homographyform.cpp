@@ -48,11 +48,11 @@ void HomographyForm::disconnectSignals(){
 
 void HomographyForm::connectSignals(){
 
-    connect(m_mappingWidget,&MappingLabel::signalMappingPoint,this, &HomographyForm::storeMappingPoint);
-    connect(m_mappingWidget,&MappingLabel::signalMappingPoint,m_imageWidget, &ImageLabel::activateImageClick);
-    connect(m_imageWidget,&ImageLabel::signalImagePoint,this, &HomographyForm::storeImagePoint);
-    connect(m_mappingWidget,&MappingLabel::signalClearMappingPont,this, &HomographyForm::clearMappingPoint);
-    connect(m_imageWidget,&ImageLabel::signalClearImagePoint,this, &HomographyForm::clearMappingPoint);
+    connect(m_mappingWidget,&MappingLabel::signalMappingPoint,this, &HomographyForm::storeMappingPoint, Qt::UniqueConnection);
+    connect(m_mappingWidget,&MappingLabel::signalMappingPoint,m_imageWidget, &ImageLabel::activateImageClick, Qt::UniqueConnection);
+    connect(m_imageWidget,&ImageLabel::signalImagePoint,this, &HomographyForm::storeImagePoint, Qt::UniqueConnection);
+    connect(m_mappingWidget,&MappingLabel::signalClearMappingPont,this, &HomographyForm::clearMappingPoint, Qt::UniqueConnection);
+    connect(m_imageWidget,&ImageLabel::signalClearImagePoint,this, &HomographyForm::clearMappingPoint, Qt::UniqueConnection);
     m_imageWidget->deactivateImageClick();
 }
 
@@ -357,7 +357,7 @@ void HomographyForm::hideSizeForm(){
 void HomographyForm::on_clearPointsButton_clicked()
 {
 
-    QMessageBox::StandardButton reply = QMessageBox::question(this, "Delete object", "Are you sure you want to delete this object ?", QMessageBox::Yes|QMessageBox::No);
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Clear points", "Are you sure you want to delete all points ?", QMessageBox::Yes|QMessageBox::No);
 
       if (reply == QMessageBox::Yes) {
 
