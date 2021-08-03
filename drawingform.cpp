@@ -565,13 +565,14 @@ void DrawingForm::on_saveAlphaButton_clicked()
 
 void DrawingForm::on_measureDistanceButton_clicked()
 {
-    float pixelDensity = m_calibrationData->getPixelDensity();
-
+    
     float distance;
 
     if(m_imagePoints.size() > 1){
+        
+        cv::perspectiveTransform(m_imagePoints,m_imagePoints, m_homography->getHomographyMatrix());
 
-        distance = cv::norm(m_imagePoints[0]-m_imagePoints[1])*pixelDensity;
+        distance = cv::norm(m_imagePoints[0] - m_imagePoints[1])/10;
 
     }else{
 
